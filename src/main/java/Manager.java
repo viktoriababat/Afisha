@@ -1,55 +1,53 @@
 public class Manager {
     String[] names;
-    int k;
+    int limit;
 
     public Manager() {
         names = new String[0];
-        k = 10;
-
+        limit = 10;
     }
-    public Manager(int k) {
+
+    public Manager(int limit) {
         names = new String[0];
-        this.k = k;
-
+        this.limit = limit;
     }
-    public void add (String x){
-        String[] updateNames = new String[names.length +1];
 
-        for (int i=0;i<names.length; ++i){
+    public void add(String x) {
+        String[] updateNames = new String[names.length + 1];
+
+        for (int i = 0; i < names.length; ++i) {
             updateNames[i] = names[i];
         }
         updateNames[names.length] = x;
         names = updateNames;
 
     }
-    public String[] findAll(){
-        String[] res =   new String[names.length];
-        for (int i=0;i<names.length; ++i) {
-        res[i] = names[i];
+
+    public String[] findAll() {
+        String[] allFilms = new String[names.length];
+        for (int i = 0; i < names.length; ++i) {
+            allFilms[i] = names[i];
         }
-        return res;
+        return allFilms;
     }
-    public String[] findLast(){
 
-  int resultLength;
-        if (names.length>=k) {
+    public String[] findLast() {
 
-            resultLength = k;
+        int resultLength;
+        if (names.length >= limit) {
+            resultLength = limit;
         } else {
             resultLength = names.length;
         }
-  String[] result = new String [resultLength];
-        for (int i=0;i<resultLength; ++i) {
-            result[i]=names[(names.length-resultLength)+i];
-
-
+        String[] lastFilms = new String[resultLength];
+        for (int i = 0; i < resultLength; ++i) {
+            lastFilms[i] = names[(names.length - resultLength) + i];
         }
-        for (int i=0;i<resultLength / 2; ++i) {
-
-          String t=  result[i];
-          result[i] = result[resultLength-i-1];
-           result[resultLength-i-1] = t;
+        for (int i = 0; i < resultLength / 2; ++i) {
+            String t = lastFilms[i];
+            lastFilms[i] = lastFilms[resultLength - i - 1];
+            lastFilms[resultLength - i - 1] = t;
         }
-        return result;
+        return lastFilms;
     }
 }

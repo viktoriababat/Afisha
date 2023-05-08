@@ -5,52 +5,44 @@ public class ManagerTest {
     @Test
 
     public void addTest() {
-        Manager m = new Manager();
-        m.add("x");
-        m.add("y");
-        m.add("z");
-        String[] a = {"x", "y", "z"};
-        Assertions.assertArrayEquals(m.findAll(), a);
-
-
+        Manager manager = new Manager();
+        manager.add("x");
+        manager.add("y");
+        manager.add("z");
+        String[] expected = {"x", "y", "z"};
+        Assertions.assertArrayEquals(manager.findAll(), expected);
     }
 
     @Test
     public void findLastTest() {
-        Manager m = new Manager();
-        m.add("x");
-        m.add("y");
-        m.add("z");
-        String[] a = {"z", "y", "x"};
-        Assertions.assertArrayEquals(m.findLast(), a);
-
-
+        Manager manager = new Manager();
+        manager.add("x");
+        manager.add("y");
+        manager.add("z");
+        String[] expected = {"z", "y", "x"};
+        Assertions.assertArrayEquals(manager.findLast(), expected);
     }
 
     @Test
     public void findLastTest2() {
-        Manager m = new Manager(2);
-        m.add("x");
-        m.add("y");
-        m.add("z");
-        String[] a = {"z", "y"};
-        Assertions.assertArrayEquals(m.findLast(), a);
-
-
+        Manager manager = new Manager(2);
+        manager.add("x");
+        manager.add("y");
+        manager.add("z");
+        String[] expected = {"z", "y"};
+        Assertions.assertArrayEquals(manager.findLast(), expected);
     }
 
     @Test
     public void findLastTest3() {
-        Manager m = new Manager();
+        Manager manager = new Manager();
         for (int i = 0; i <= 12; ++i) {
-            m.add(i + "");
+            manager.add(i + "");
         }
-        String[] a = new String[10];
+        String[] expected = new String[10];
         for (int i = 12; i > 2; --i) {
-            a[12 - i] = i + "";
+            expected[12 - i] = i + "";
         }
-        Assertions.assertArrayEquals(m.findLast(), a);
-
-
+        Assertions.assertArrayEquals(manager.findLast(), expected);
     }
 }
